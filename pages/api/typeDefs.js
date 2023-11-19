@@ -14,6 +14,7 @@ const typeDefs = gql`
   type List {
     main: Main
     wind: Wind
+    dt_txt: String
   }
 
   type Main {

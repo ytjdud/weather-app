@@ -24,6 +24,7 @@ const resolvers = {
           //         a:  { ...weatherItem.weather }//weatherItem.weather 는 Weather, {}
           //       })),
           wind: { ...item.wind },
+          dt_txt: item.dt_txt
         }));
         // console.log(
         //   data.list.map(item => ({ // data.list 는 [List]
