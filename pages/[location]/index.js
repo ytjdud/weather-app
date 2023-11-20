@@ -5,6 +5,9 @@ import styles from '../../styles/Location.module.css';
 import { useQuery, gql } from '@apollo/client';
 import Layout from '../Component/Layout';
 
+import Image from 'next/image';
+import earth from '/public/earth.png'
+
 const GET_WEATHERS = gql`
   query GetWeatherForecast($cityName: String!) {
     getWeatherForecast(cityName: $cityName) {
@@ -79,6 +82,15 @@ export default function LocationPage() {
   return (
     <Layout>
         
+        <div style={{ textAlign: 'center' }}>
+          <Image 
+            src={earth} 
+            alt='지구' 
+            width="50vmin" 
+            height="50vmin" 
+          />
+        </div>
+
         <h1 style={{fontSize: '5vmin', textAlign: 'center'}}>Weather Information for {location}</h1>
         
         <div className={styles.now}>
