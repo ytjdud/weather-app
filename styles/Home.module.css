@@ -1,18 +1,17 @@
 .container {
   padding: 0 2rem;
+  text-align: center;
 }
 
 .welcome {
   white-space: pre-line;
-  text-align: center;
-  font-size : 7vw;
+  font-size : 10vmin;
   margin-bottom: 0px;
 }
 
 .detail {
-  text-align: center;
   color: darkgrey;
-  font-size: 1.2vw;
+  font-size: 2vmin;
   margin: 20px;
 }
 
@@ -40,17 +39,13 @@
   background-color: white;
   border-radius: 5px;
   border-color: hotpink;
-  border-width: 1px;
-  padding: 8px 35px;
-  margin-right: 10px;
+  border-width:  .2vmin;
+  font-size: 2vmin;
+  /* padding: 8px 35px; */
+  padding: 1.2vmin 6vmin;
+  margin-right: 1.2vmin; 
+  margin-bottom: 6vmin;
   border-style: solid;
-}
-
-.earthImg {
-  width: 20%;
-  height: auto;
-  display: block;
-  margin: 40px auto;
 }
 
 @media (min-width: 1280px) {
