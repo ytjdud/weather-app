@@ -28,12 +28,9 @@ export default function LocationPage() {
   
   console.log(data);
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        {/* <link rel="icon" href="./public/favicon.ico" /> */}
-      </Head>
-      <h2>Weather Information for {location}</h2>
+    <Layout>
+      <h1 style={{fontSize: '5vmin'}}>Weather Information for {location}</h1>
+      
       <div className={styles.now}>
         <p>May</p>
         <p>{location}, </p>
