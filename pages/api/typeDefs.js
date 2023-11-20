@@ -13,6 +13,7 @@ const typeDefs = gql`
 
   type List {
     main: Main
+    weather: [Weather]
     wind: Wind
     dt_txt: String
   }
@@ -27,6 +28,10 @@ const typeDefs = gql`
 
   type Wind {
     speed: Float
+  }
+
+  type Weather {
+    description : String
   }
 
   type City {

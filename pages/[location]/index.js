@@ -20,6 +20,9 @@ const GET_WEATHERS = gql`
           speed
         }
         dt_txt
+        weather{
+          description
+        }
       }
       city {
         country
@@ -53,7 +56,6 @@ export default function LocationPage() {
     dateTime = new Date(item.dt_txt);
     day = dateTime.getDate();
 
-    // Day를 키로 하는 그룹이 없으면 새로 생성
     if (!groupedByDay[day]) {
       groupedByDay[day] = [];
     }
@@ -68,12 +70,11 @@ export default function LocationPage() {
     });
   });
   const resultArray = Object.values(groupedByDay);
-  console.log(resultArray);
   
   const city = data.getWeatherForecast.city;
-  const list = data.getWeatherForecast.list
 
   const now = resultArray[0][0];
+  console.log(now);
 
   return (
     <Layout>
@@ -89,8 +90,8 @@ export default function LocationPage() {
             </p>
           </div>
           <div className={ styles.right } >
-            <p style={{fontSize: '6vmin'}}>{now.main.temp}°C</p>
-            <p style={{fontSize: '2vmin'}}>Feels like {now.main.feels_like}°C **weather추가** 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</p>
+            <p style={{fontSize: '6vmin'}}>{now.main.temp}K</p>
+            <p style={{fontSize: '2vmin'}}>Feels like {now.main.feels_like}K {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</p>
           </div>
         </div>
 
@@ -111,8 +112,8 @@ export default function LocationPage() {
                         <div className={styles.container} key={j}>
                           {/* 여기에 각 list의 요소에 대한 JSX를 작성 */}
                           <p className={ styles.left } style={{fontSize: '3.5vmin'}}>{array.hours}:00{array.meridiem}</p>
-                          <p className={ styles.right }>~~날씨~~</p>
-                          <p className={ styles.right } style={{fontSize: '3.5vmin'}}>{array.main.temp_min}°C/{array.main.temp_max}°C</p>
+                          <p className={ styles.right } style={{fontSize: '3vmin'}}>{array.weather[0].description}</p>
+                          <p className={ styles.right } style={{fontSize: '3.5vmin'}}>{array.main.temp_min}K/{array.main.temp_max}K</p>
                         </div>
                       ))
                     }

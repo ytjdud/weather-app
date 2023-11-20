@@ -19,11 +19,9 @@ const resolvers = {
         };
 
         const listData = data.list.map(item => ({ // data.list 는 [List]
-          main: { ...item.main }, // item.main은 Main, {}
-          // weather: item.weather.map(weatherItem => ({ // item.weather 는 [Weather]
-          //         a:  { ...weatherItem.weather }//weatherItem.weather 는 Weather, {}
-          //       })),
-          wind: { ...item.wind },
+          main: item.main , // item.main은 Main, {}
+          weather: item.weather,
+          wind: item.wind ,
           dt_txt: item.dt_txt
         }));
         // console.log(
