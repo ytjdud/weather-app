@@ -10,14 +10,19 @@ OPEN WEATHER 의 [5 day weather forecast API](https://openweathermap.org/forecas
 ## Getting Started
 
 <!-- First, run the development server: -->
-1. 먼저, 다음 명령어를 입력해 개발 서버를 시작합니다. 
-
+1. 먼저, 다음 명령어를 입력해 개발 서버를 시작합니다.     
+    
 ```zsh
 npm run dev
+```  
+  
+2. 해당 프로젝트 package.json 파일의 의존성을 설치합니다.
+```zsh
+npm install
 ```
-   
+        
 <!-- Then, Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. -->
-2. [http://localhost:3000](http://localhost:3000) 에 접속하세요. 메인 페이지입니다.
+3. [http://localhost:3000](http://localhost:3000) 에 접속하세요. 메인 페이지입니다.
 
 
 <!-- [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/graphql](http://localhost:3000/api/graphql). This endpoint can be edited in `pages/api/graphql.js`.
