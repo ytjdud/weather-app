@@ -6,6 +6,7 @@
   border-radius: 5px;
   margin-bottom: 1.5%;
   position: relative;
+  margin: 7vmin;
 }
 
 .container{
@@ -18,11 +19,14 @@
   top: 50%;
   transform: translate(0, -50%);
   margin: 0%;
+  margin-left: 5vmin;
 }
 
 .right {
   text-align: right;
+  margin-right: 5vmin;
 }
+
 
 .days {
   background-color: white;
@@ -37,6 +41,7 @@
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 5px;
+  margin: 7vmin;
 }
 .accordion summary {
   font-weight: bold;
