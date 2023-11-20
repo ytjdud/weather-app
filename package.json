@@ -9,9 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.0.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@apollo/client": "^3.8.7",
+    "@apollo/server": "^4.9.5",
+    "@as-integrations/next": "^3.0.0",
+    "apollo-server-express": "^3.13.0",
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "graphql": "^16.8.1",
+    "graphql-playground-middleware-express": "^1.7.23",
+    "graphql-tag": "^2.12.6",
+    "next": "^12.3.4",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "eslint": "8.53.0",

@@ -1,0 +1,56 @@
+.now {
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray;
+  border-radius: 5px;
+  margin-bottom: 1.5%;
+  position: relative;
+  margin: 7vmin;
+}
+
+.container{
+  position: relative;
+}
+
+.left {
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  margin: 0%;
+  margin-left: 5vmin;
+}
+
+.right {
+  text-align: right;
+  margin-right: 5vmin;
+}
+
+
+.days {
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.accordion {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 7vmin;
+}
+.accordion summary {
+  font-weight: bold;
+  cursor: pointer;
+  border-top: 1px solid lightgray;
+}
+
+
+/* 열림 아이템 */
+/* .accordion details[open] summary {
+  margin-bottom: .5em;
+} */
