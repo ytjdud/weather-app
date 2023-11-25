@@ -81,29 +81,47 @@ export default function LocationPage() {
 
   return (
     <Layout>
+      <div className={styles.container}>
         
         <div style={{ textAlign: 'center' }}>
           <Image 
             src={earth} 
             alt='지구' 
-            width="50vmin" 
-            height="50vmin" 
+            width='40px' 
+            height='40px' 
           />
         </div>
 
-        <h1 style={{fontSize: '5vmin', textAlign: 'center'}}>Weather Information for {location}</h1>
+        <h1 className={styles.title}>Weather Information for {location}</h1>
         
-        <div className={styles.now}>
-          <div className={ styles.left }>
-            <p style={{fontSize: '3vmin'}}>{now.month} {now.day}. {now.hours}:00{now.meridiem}</p>
-            <p>
-              <span style={{fontSize: '4vmin'}}>{location}, {city.country}</span>
-              <span style={{fontSize: '2vmin'}}>(인구수:{city.population})</span>
-            </p>
-          </div>
-          <div className={ styles.right } >
-            <p style={{fontSize: '6vmin'}}>{now.main.temp}K</p>
-            <p style={{fontSize: '2vmin'}}>Feels like {now.main.feels_like}K {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</p>
+        <div className={styles.currentContainer}>
+          <div className={styles.currentBox}>
+            <div className={styles.leftBox}>
+              <div className={styles.roundedContainer}>
+                <Image 
+                src="https://placehold.co/50x50" 
+                alt="Weather icon placeholder" 
+                className={styles.icon}
+                width='50px'
+                height='50px'
+                objectFit="cover"  //필요에따라 조절..
+                />
+              </div>
+            
+              <div>
+                <div style={{fontSize: '3vmin'}}>{now.month} {now.day}. {now.hours}:00{now.meridiem}</div>
+                <div>
+                  <span style={{fontSize: '4vmin'}}>{location}, {city.country}</span>
+                  <span style={{fontSize: '2vmin'}}>(인구수:{city.population})</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={ styles.currentRightBox } >
+              <div style={{fontSize: '6vmin', fontWeight: 'bold'}}>{now.main.temp}K</div>
+              <div style={{fontSize: '2vmin'}}>Feels like {now.main.feels_like}K {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</div>
+            </div>
+
           </div>
         </div>
 
@@ -112,20 +130,24 @@ export default function LocationPage() {
           { 
             resultArray.map((list, i) => (
               <>
-                <details>
+                <details style={{marginTop:' 1rem'}}>
                   <summary>
                     <h3 style={{fontSize: '3.5vmin', marginLeft:'4vmin',}}>
                       {resultArray[i][0].month} {resultArray[i][0].day}
                     </h3>
                   </summary>
-                  <div style={{margin: '0, 4vmin'}}>
+                  <div className="mt-4 space-y-4">
                     {
                       list.map((array, j) => (
-                        <div className={styles.container} key={j}>
+                        <div className={styles.eachTimeContainer} key={j}>
                           {/* 여기에 각 list의 요소에 대한 JSX를 작성 */}
-                          <p className={ styles.left } style={{fontSize: '3.5vmin'}}>{array.hours}:00{array.meridiem}</p>
-                          <p className={ styles.right } style={{fontSize: '3vmin'}}>{array.weather[0].description}</p>
-                          <p className={ styles.right } style={{fontSize: '3.5vmin'}}>{array.main.temp_min}K/{array.main.temp_max}K</p>
+                          <div className={styles.leftBox}>
+                            <p className={ styles.left } style={{fontSize: '3.5vmin'}}>{array.hours}:00{array.meridiem}</p>
+                          </div>
+                          <div>
+                            <p className={ styles.right } style={{fontSize: '3vmin'}}>{array.weather[0].description}</p>
+                            <p className={ styles.right } style={{fontSize: '3.5vmin'}}>{array.main.temp_min}K/{array.main.temp_max}K</p>
+                          </div>
                         </div>
                       ))
                     }
@@ -135,7 +157,7 @@ export default function LocationPage() {
             ))
           }
         </div>
-      
+      </div>
     </Layout>
   );
 }
