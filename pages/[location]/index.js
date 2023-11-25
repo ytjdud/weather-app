@@ -130,11 +130,11 @@ export default function LocationPage() {
           { 
             resultArray.map((list, i) => (
               <>
-                <details style={{marginTop:' 1rem'}}>
+                <details className={styles.details}>
                   <summary>
-                    <h3 style={{fontSize: '3.5vmin', marginLeft:'4vmin',}}>
+                    <h2 style={{fontSize: '3.5vmin'}}>
                       {resultArray[i][0].month} {resultArray[i][0].day}
-                    </h3>
+                    </h2>
                   </summary>
                   <div className="mt-4 space-y-4">
                     {

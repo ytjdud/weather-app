@@ -1,7 +1,7 @@
 .container{
   max-width: 2xl; 
   margin: 0 auto; 
-  padding: 50px;
+  padding: 40px;
 }
 
 .title {
@@ -73,6 +73,27 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+
+  padding: 0 2rem ;
+  list-style: none;
+  order: 1; /* 글자랑 marker 순서 바꾸기 */
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary::before {
+  content: ' \f078';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 0.5rem;
+  color: rgb(243, 30, 65);
+  order: 2; /* 글자랑 marker 순서 바꾸기 */
+}
+
+.accordion details[open] summary::before {
+  content: ' \f077';
 }
 
 .eachTimeContainer{
