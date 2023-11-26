@@ -71,11 +71,16 @@ export default function LocationPage() {
     if (!groupedByDay[day]) {
       groupedByDay[day] = [];
     }
+    // item.main.temp = (item.main.temp - 273.15).toFixed(2);
+    // item.main.temp_min = (item.main.temp_min - 273.15).toFixed(2);
+    // item.main.temp_max = (item.main.temp_max - 273.15).toFixed(2);
+    // item.main.feels_like = (item.main.feels_like - 273.15).toFixed(2);
 
-    item.main.temp = (item.main.temp - 273.15).toFixed(2);
-    item.main.temp_min = (item.main.temp_min - 273.15).toFixed(2);
-    item.main.temp_max = (item.main.temp_max - 273.15).toFixed(2);
-    item.main.feels_like = (item.main.feels_like - 273.15).toFixed(2);
+    Object.keys(item.main).forEach(property => {
+      if (property !== 'humidity') {
+        item.main[property] = (item.main[property] - 273.15).toFixed(2);
+      }
+    });
 
     // 해당 Day의 그룹에 현재 항목 추가
     groupedByDay[day].push({
