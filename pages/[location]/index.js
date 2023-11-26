@@ -56,8 +56,6 @@ export default function LocationPage() {
   let day = null;
   let lastDay = 0;
 
-  // console.log(data.getWeatherForecast.list);
-
   // 각 list 항목을 반복하면서 Day를 추출하여 그룹화
   data.getWeatherForecast.list.forEach(item => {
     dateTime = new Date(item.dt_txt);
@@ -74,6 +72,11 @@ export default function LocationPage() {
       groupedByDay[day] = [];
     }
 
+    item.main.temp = (item.main.temp - 273.15).toFixed(2);
+    item.main.temp_min = (item.main.temp_min - 273.15).toFixed(2);
+    item.main.temp_max = (item.main.temp_max - 273.15).toFixed(2);
+    item.main.feels_like = (item.main.feels_like - 273.15).toFixed(2);
+
     // 해당 Day의 그룹에 현재 항목 추가
     groupedByDay[day].push({
       ...item,
@@ -88,7 +91,6 @@ export default function LocationPage() {
   const city = data.getWeatherForecast.city;
 
   const now = resultArray[0][0];
-  // console.log(now);
 
   return (
     <Layout>
@@ -129,8 +131,8 @@ export default function LocationPage() {
             </div>
 
             <div className={ styles.currentRightBox } >
-              <div style={{fontSize: '6vmin', fontWeight: 'bold'}}>{now.main.temp}K</div>
-              <div style={{fontSize: '2vmin', color:'rgb(153 152 152)'}}>Feels like {now.main.feels_like}K {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</div>
+              <div style={{fontSize: '6vmin', fontWeight: 'bold'}}>{now.main.temp}°C</div>
+              <div style={{fontSize: '2vmin', color:'rgb(153 152 152)'}}>Feels like {now.main.feels_like}°C {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</div>
             </div>
 
           </div>
@@ -143,7 +145,7 @@ export default function LocationPage() {
               <>
                 <details>
                   <summary>
-                    <h2 style={{fontSize: '3.5vmin'}}>
+                    <h2 style={{fontSize: '3.5vmin'}} key={i}>
                       {resultArray[i][0].month} {resultArray[i][0].day}
                     </h2>
                   </summary>
@@ -162,14 +164,13 @@ export default function LocationPage() {
                               objectFit="cover"  //필요에따라 조절..
                               />
                             </div>
-                            {/* 여기에 각 list의 요소에 대한 JSX를 작성 */}
                             <div>
                               <div style={{fontSize: '3.5vmin', color:'#606060'}}>{array.hours}:00{array.meridiem}</div>
                             </div>
                           </div>
                           <div>
                             <div style={{fontSize: '2vmin', textAlign: 'end', color:'rgb(153 152 152)'}}>{array.weather[0].description}</div>
-                            <div style={{fontSize: '3.5vmin'}}>{array.main.temp_min}K/{array.main.temp_max}K</div>
+                            <div style={{fontSize: '3.5vmin'}}>{array.main.temp_min}°C/{array.main.temp_max}°C</div>
                           </div>
                         </div>
                       ))
