@@ -97,7 +97,7 @@ export default function LocationPage() {
         <div className={styles.currentContainer}>
           <div className={styles.currentBox}>
             <div className={styles.leftBox}>
-              <div className={styles.roundedContainer}>
+              <div className={styles.currentRoundedContainer}>
                 <Image 
                 src="https://placehold.co/50x50" 
                 alt="Weather icon placeholder" 
@@ -139,14 +139,26 @@ export default function LocationPage() {
                   <div className="mt-4 space-y-4">
                     {
                       list.map((array, j) => (
-                        <div className={styles.eachTimeContainer} key={j}>
-                          {/* 여기에 각 list의 요소에 대한 JSX를 작성 */}
+                        <div className={styles.eachTimeContainer} style={{ padding: ' 1rem 3rem' }} key={j}>
                           <div className={styles.leftBox}>
-                            <p className={ styles.left } style={{fontSize: '3.5vmin'}}>{array.hours}:00{array.meridiem}</p>
+                            <div className={styles.forecastRoundedContainer}>
+                              <Image 
+                              src="https://placehold.co/50x50" 
+                              alt="Weather icon placeholder" 
+                              className={styles.icon}
+                              width='50px'
+                              height='50px'
+                              objectFit="cover"  //필요에따라 조절..
+                              />
+                            </div>
+                            {/* 여기에 각 list의 요소에 대한 JSX를 작성 */}
+                            <div>
+                              <div style={{fontSize: '3.5vmin'}}>{array.hours}:00{array.meridiem}</div>
+                            </div>
                           </div>
                           <div>
-                            <p className={ styles.right } style={{fontSize: '3vmin'}}>{array.weather[0].description}</p>
-                            <p className={ styles.right } style={{fontSize: '3.5vmin'}}>{array.main.temp_min}K/{array.main.temp_max}K</p>
+                            <div style={{fontSize: '2vmin', textAlign: 'end'}}>{array.weather[0].description}</div>
+                            <div style={{fontSize: '3.5vmin'}}>{array.main.temp_min}K/{array.main.temp_max}K</div>
                           </div>
                         </div>
                       ))

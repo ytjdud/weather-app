@@ -31,7 +31,7 @@
   align-items: center;
 }
 
-.roundedContainer {
+.currentRoundedContainer {
   width: 50px;
   height: 50px;
   border-radius: 9999px; /* 큰 값으로 설정하여 원 모양이 되도록 함 */
@@ -100,6 +100,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.forecastRoundedContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px; /* 큰 값으로 설정하여 원 모양이 되도록 함 */
+  background-color: #FFD6D6; /* 원의 배경색 */
+  padding: 0.5rem; /* 내부 여백 */
+  margin-right: 1.5rem; /* 우측 여백 */
 }
 
 
