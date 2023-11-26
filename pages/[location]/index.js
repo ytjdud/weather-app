@@ -54,10 +54,21 @@ export default function LocationPage() {
   ];
   let dateTime = null;
   let day = null;
+  let lastDay = 0;
+
+  // console.log(data.getWeatherForecast.list);
+
   // 각 list 항목을 반복하면서 Day를 추출하여 그룹화
   data.getWeatherForecast.list.forEach(item => {
     dateTime = new Date(item.dt_txt);
     day = dateTime.getDate();
+
+    // 달이 바뀌었을 때 29 30 31 1 2
+    if(day-lastDay < 0){
+      day += lastDay;
+    }else{
+      lastDay = day;
+    }
 
     if (!groupedByDay[day]) {
       groupedByDay[day] = [];
@@ -77,7 +88,7 @@ export default function LocationPage() {
   const city = data.getWeatherForecast.city;
 
   const now = resultArray[0][0];
-  console.log(now);
+  // console.log(now);
 
   return (
     <Layout>
@@ -128,7 +139,7 @@ export default function LocationPage() {
         <div className={styles.accordion}>
           <h2 style={{fontSize: '4.5vmin', textAlign: 'center'}}>5-day Forecast</h2>
           { 
-            resultArray.map((list, i) => (
+            resultArray.slice(0, 5).map((list, i) => (
               <>
                 <details>
                   <summary>
