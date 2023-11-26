@@ -71,26 +71,26 @@ export default function LocationPage() {
     if (!groupedByDay[day]) {
       groupedByDay[day] = [];
     }
-    // item.main.temp = (item.main.temp - 273.15).toFixed(2);
-    // item.main.temp_min = (item.main.temp_min - 273.15).toFixed(2);
-    // item.main.temp_max = (item.main.temp_max - 273.15).toFixed(2);
-    // item.main.feels_like = (item.main.feels_like - 273.15).toFixed(2);
 
-    Object.keys(item.main).forEach(property => {
-      if (property !== 'humidity') {
-        item.main[property] = (item.main[property] - 273.15).toFixed(2);
-      }
-    });
-
-    // 해당 Day의 그룹에 현재 항목 추가
-    groupedByDay[day].push({
+    const newItem = {
       ...item,
+      main: { ...item.main },
       month: monthNames[dateTime.getMonth()],
       day: dateTime.getDate(),
       hours: dateTime.getHours().toString().padStart(2, '0'),
       meridiem: dateTime.getHours() >= 12 ? "pm" : "am"
-    });
+    };
+    
+    // Kelvin to Celsius
+    newItem.main.temp = (newItem.main.temp - 273.15).toFixed(2);
+    newItem.main.temp_min = (newItem.main.temp_min - 273.15).toFixed(2);
+    newItem.main.temp_max = (newItem.main.temp_max - 273.15).toFixed(2);
+    newItem.main.feels_like = (newItem.main.feels_like - 273.15).toFixed(2);
+    
+    // 해당 Day의 그룹에 현재 항목 추가
+    groupedByDay[day].push(newItem);
   });
+
   const resultArray = Object.values(groupedByDay);
   
   const city = data.getWeatherForecast.city;
@@ -136,8 +136,8 @@ export default function LocationPage() {
             </div>
 
             <div className={ styles.currentRightBox } >
-              <div style={{fontSize: '6vmin', fontWeight: 'bold'}}>{now.main.temp}°C</div>
-              <div style={{fontSize: '2vmin', color:'rgb(153 152 152)'}}>Feels like {now.main.feels_like}°C {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</div>
+              <div style={{fontSize: '6vmin', fontWeight: 'bold'}}>{now.main.temp}K</div>
+              <div style={{fontSize: '2vmin', color:'rgb(153 152 152)'}}>Feels like {now.main.feels_like}K {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</div>
             </div>
 
           </div>
@@ -150,7 +150,7 @@ export default function LocationPage() {
               <>
                 <details>
                   <summary>
-                    <h2 style={{fontSize: '3.5vmin'}} key={i}>
+                    <h2 style={{fontSize: '3.5vmin'}}>
                       {resultArray[i][0].month} {resultArray[i][0].day}
                     </h2>
                   </summary>
@@ -169,13 +169,14 @@ export default function LocationPage() {
                               objectFit="cover"  //필요에따라 조절..
                               />
                             </div>
+                            {/* 여기에 각 list의 요소에 대한 JSX를 작성 */}
                             <div>
                               <div style={{fontSize: '3.5vmin', color:'#606060'}}>{array.hours}:00{array.meridiem}</div>
                             </div>
                           </div>
                           <div>
                             <div style={{fontSize: '2vmin', textAlign: 'end', color:'rgb(153 152 152)'}}>{array.weather[0].description}</div>
-                            <div style={{fontSize: '3.5vmin'}}>{array.main.temp_min}°C/{array.main.temp_max}°C</div>
+                            <div style={{fontSize: '3.5vmin'}}>{array.main.temp_min}K/{array.main.temp_max}K</div>
                           </div>
                         </div>
                       ))
