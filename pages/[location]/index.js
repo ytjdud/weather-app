@@ -87,8 +87,8 @@ export default function LocationPage() {
           <Image 
             src={earth} 
             alt='지구' 
-            width='40px' 
-            height='40px' 
+            width='60px' 
+            height='60px' 
           />
         </div>
 
@@ -109,17 +109,17 @@ export default function LocationPage() {
               </div>
             
               <div>
-                <div style={{fontSize: '3vmin'}}>{now.month} {now.day}. {now.hours}:00{now.meridiem}</div>
+                <div style={{fontSize: '3vmin', fontWeight: '600', color:'#606060'}}>{now.month} {now.day}. {now.hours}:00{now.meridiem}</div>
                 <div>
-                  <span style={{fontSize: '4vmin'}}>{location}, {city.country}</span>
-                  <span style={{fontSize: '2vmin'}}>(인구수:{city.population})</span>
+                  <span style={{fontSize: '4vmin', fontWeight: '600'}}>{location}, {city.country}</span>
+                  <span style={{fontSize: '2vmin', color:'rgb(153 152 152)'}}>(인구수:{city.population})</span>
                 </div>
               </div>
             </div>
 
             <div className={ styles.currentRightBox } >
               <div style={{fontSize: '6vmin', fontWeight: 'bold'}}>{now.main.temp}K</div>
-              <div style={{fontSize: '2vmin'}}>Feels like {now.main.feels_like}K {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</div>
+              <div style={{fontSize: '2vmin', color:'rgb(153 152 152)'}}>Feels like {now.main.feels_like}K {now.weather[0].description} 풍속 {now.wind.speed}m/s 습도 {now.main.humidity}%</div>
             </div>
 
           </div>
@@ -130,7 +130,7 @@ export default function LocationPage() {
           { 
             resultArray.map((list, i) => (
               <>
-                <details className={styles.details}>
+                <details>
                   <summary>
                     <h2 style={{fontSize: '3.5vmin'}}>
                       {resultArray[i][0].month} {resultArray[i][0].day}
@@ -153,11 +153,11 @@ export default function LocationPage() {
                             </div>
                             {/* 여기에 각 list의 요소에 대한 JSX를 작성 */}
                             <div>
-                              <div style={{fontSize: '3.5vmin'}}>{array.hours}:00{array.meridiem}</div>
+                              <div style={{fontSize: '3.5vmin', color:'#606060'}}>{array.hours}:00{array.meridiem}</div>
                             </div>
                           </div>
                           <div>
-                            <div style={{fontSize: '2vmin', textAlign: 'end'}}>{array.weather[0].description}</div>
+                            <div style={{fontSize: '2vmin', textAlign: 'end', color:'rgb(153 152 152)'}}>{array.weather[0].description}</div>
                             <div style={{fontSize: '3.5vmin'}}>{array.main.temp_min}K/{array.main.temp_max}K</div>
                           </div>
                         </div>
