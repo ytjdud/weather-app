@@ -43,9 +43,16 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 도시 별 상세 화면은 현재 날짜를 포함한 5일의 예보가 제공됩니다.   
 날짜를 클릭하면 시간대 별 정보를 볼 수 있습니다.
 
+## Other Info
 
-### 기타 정보
-기술 스택
+### Screenshots
+<img src="https://github.com/ytjdud/weather-app/assets/102743371/3496b07e-243d-45aa-a971-a41cb3769488.png" width="500" height="auto"/>  
+</br>
+<img src="https://github.com/ytjdud/weather-app/assets/102743371/0c5531f4-16ce-498e-943c-c1c14cd2e27c.png" width="500" height="auto"/>
+</br>
+<img src="https://github.com/ytjdud/weather-app/assets/102743371/f5da4546-5278-4780-9d88-efa5ded10be9.png" width="500" height="auto"/>
+
+### Tech Stacks
 - Next.js (v.12.3.4)
 - GraphQL
 - Apollo
