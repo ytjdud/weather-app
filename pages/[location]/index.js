@@ -139,7 +139,7 @@ export default function LocationPage() {
         <div className={styles.accordion}>
           <h2 style={{fontSize: '4.5vmin', textAlign: 'center'}}>5-day Forecast</h2>
           { 
-            resultArray.map((list, i) => (
+            resultArray.slice(0, 5).map((list, i) => (
               <>
                 <details>
                   <summary>
